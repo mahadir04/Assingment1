@@ -134,7 +134,7 @@ class SecondPage extends StatelessWidget {
               ],
             ),
             DropdownButton<String>(
-              items: ['Real copy', 'Paper print', 'Black & white print'].map((String value) {
+              items: ['RAM', 'GPU', 'CPU'].map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
