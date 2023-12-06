@@ -24,11 +24,14 @@ class FirstPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(16.0),
         children: [
-          CardWidget('ACER Nitro-5', '4.5','nitro-5.jpg',
-              'Acer Nitro 5 AN515-44 15.6-inch Full HD Display Ryzen 5 8GB RAM 1TB HDD + 256GB SSD Gaming',13.5),
-          CardWidget('HP-Victus',  '3.8','Victus.jpg',
-              'HP VICTUS Gaming 15-FA0025 Core i5 12th Gen 15.6 Inch FHD Laptop - Vibe Gaming',15.6),
-          // Add more cards as needed
+          CardWidget('ACER Nitro-5','nitro-5.jpg',
+              'Acer Nitro 5 AN515-44 15.6-inch Full HD Display Ryzen 5 8GB RAM 1TB HDD + 256GB SSD Gaming',1300.5),
+          CardWidget('HP-Victus', 'Victus.jpg',
+              'HP VICTUS Gaming 15-FA0025 Core i5 12th Gen 15.6 Inch FHD Laptop - Vibe Gaming',1500.6),
+          CardWidget('HP-ENVY', 'envy.jpg',
+              'HP Envy 16-H1023 Intel Core i9 13th Gen Touchscreen Laptop',1690.6),
+          CardWidget('HP-Probook', 'probook.jpg',
+              'HP Probook 450 G8 Core i5 11th Gen 512GB SSD 15.6 inch FHD Laptop',1300.6),
         ],
       ),
     );
@@ -37,12 +40,11 @@ class FirstPage extends StatelessWidget {
 
 class CardWidget extends StatelessWidget {
   final String LaptopName;
-  final String Rating;
   final String imageName;
   final String description;
   final double price;
 
-  CardWidget(this.LaptopName, this.Rating,this.imageName,this.description,this.price);
+  CardWidget(this.LaptopName,this.imageName,this.description,this.price);
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +54,10 @@ class CardWidget extends StatelessWidget {
           ListTile(
             leading: Image.asset('assets/images/$imageName',height: 150,width: 100,), // Replace with actual URL
             title: Text(LaptopName),
-            //subtitle: Text($price),
+            subtitle: Text(description),
           ),
           ListTile(
-            title: Text('Rating: $Rating'),
+            title: Text('price:$price dollar'),
           ),
           ElevatedButton.icon(
             onPressed: () {
@@ -67,7 +69,7 @@ class CardWidget extends StatelessWidget {
             icon: Icon(Icons.shopping_cart),
             label: Text('Buy Now'),
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.red),
+              backgroundColor: MaterialStateProperty.all(Colors.green),
             ),
           ),
         ],
@@ -97,11 +99,12 @@ class SecondPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Product Name: $LaptopName\n'),
-            Image.asset('assets/images/$imageName'), // Replace with actual URL
+            Text('Product Name: $LaptopName\n',style: TextStyle(fontSize: 25),),
+            Image.asset('assets/images/$imageName'),  
             //Text('\nAuthor Name: $authorName'), // Replace with actual author name
-            Text('\nShort Description: $description'),
-            Text('\nPrice: \$$price'), // Replace with actual price
+            Text('\nShort Description: $description',style: TextStyle(fontSize: 14),),
+            Text('\nPrice: \$$price',style: TextStyle(color: Colors.green,fontSize: 18),),
+            Text("Choose Payment Method",style:TextStyle(fontSize:25),),
             Row(
               children: [
                 ElevatedButton(
